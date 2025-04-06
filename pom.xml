@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -13,18 +14,26 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot_rest</name>
 	<description>Demo project for Spring Boot</description>
-	<url/>
+	<url>https://example.com</url> <!-- Добавлено URL -->
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<name>Zaur Tregulov</name>
+			<email>zaur@example.com</email>
+			<organization>Example Company</organization>
+			<organizationUrl>https://example.com</organizationUrl>
+		</developer>
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection>scm:git:https://github.com/example/springboot_rest.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/example/springboot_rest.git</developerConnection>
+		<url>https://github.com/example/springboot_rest</url>
+		<tag>HEAD</tag>
 	</scm>
 	<properties>
 		<java.version>21</java.version>
@@ -38,7 +47,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -52,16 +60,24 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional> <!-- Важно для spring-boot-devtools -->
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>springboot_rest</finalName>
 	</build>
-
 </project>
