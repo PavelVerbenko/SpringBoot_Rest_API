@@ -28,31 +28,31 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return allEmployees;
     }
 
-//    @Override
-//    @Transactional
-//    public void saveEmployee(Employee employee) {
-//
-//        Session session = sessionFactory.getCurrentSession();
-//        session.saveOrUpdate(employee);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public Employee getEmployee(int id) {
-//        Session session = sessionFactory.getCurrentSession();
-//
-//        Employee employee = session.get(Employee.class, id);
-//        return employee;
-//    }
-//
-//
-//    @Override
-//    @Transactional
-//    public void deleteEmployee(int id) {
-//        Session session = sessionFactory.getCurrentSession();
-//        Query<Employee> query = session.createQuery("delete from Employee " + "where id =: employeeId");
-//        query.setParameter("employeeId", id);
-//        query.executeUpdate();
-//    }
+    @Override
+    @Transactional
+    public void saveEmployee(Employee employee) {
+
+        Session session = entityManager.unwrap(Session.class);
+        session.saveOrUpdate(employee);
+    }
+
+    @Override
+    @Transactional
+    public Employee getEmployee(int id) {
+        Session session = entityManager.unwrap(Session.class);
+
+        Employee employee = session.get(Employee.class, id);
+        return employee;
+    }
+
+
+    @Override
+    @Transactional
+    public void deleteEmployee(int id) {
+        Session session = entityManager.unwrap(Session.class);
+        Query<Employee> query = session.createQuery("delete from Employee " + "where id =: employeeId");
+        query.setParameter("employeeId", id);
+        query.executeUpdate();
+    }
 
 }
